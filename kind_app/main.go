@@ -2,13 +2,16 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	log.Printf("Hello world from %s in %s deployed in %s", os.Getenv("PODNAME"), os.Getenv("PODNAMESPACE"), os.Getenv("NODENAME"))
+	// Set the content type header to indicate the type of data being returned
+	w.Header().Set("Content-Type", "text/plain")
+
+	// Write the response data to the http.ResponseWriter
+	fmt.Fprintf(w, "Hello world from %s in %s deployed in %s", os.Getenv("PODNAME"), os.Getenv("PODNAMESPACE"), os.Getenv("NODENAME"))
 }
 
 func main() {
