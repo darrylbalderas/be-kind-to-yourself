@@ -20,5 +20,6 @@ request:
 
 .PHONY: port_forward
 port_forward:
-	pod_name=$$(kubectl get pods --no-headers -o custom-columns=":metadata.name" | head -n 1); \
-    kubectl port-forward $$pod_name 8080:8080
+	@pod_name=$$(kubectl get pods --no-headers -o custom-columns=":metadata.name" | head -n 1); \
+    Wkubectl port-forward $$pod_name 8080:8080
+
